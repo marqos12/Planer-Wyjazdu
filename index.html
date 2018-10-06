@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<script src="./js/angular-1.7.4/angular.min.js"></script>
+<script src="./js/controller/mainController.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+<link rel="stylesheet" href="./css/style.css">
+
+<body ng-app="myApp" ng-controller="mainController">
+<nav class="site-header sticky-top py-1">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Planer</h1>
+    </div>
+</div>
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="nazwa">Nazwa</label>
+                <input type="email" ng-model="miejsce.nazwa" class="form-control" id="nazwa" aria-describedby="emailHelp" placeholder="Podaj nazwę miejsca">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="adres">Adres</label>
+                <input type="email" ng-model="miejsce.adres" class="form-control" id="adres" aria-describedby="emailHelp" placeholder="Podaj adres">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="godzina_rozpoczecia">Godzina rozpoczęcia</label>
+                <select class="form-control" ng-model="miejsce.godzinaRozpoczecia" id="godzina_rozpoczecia">
+                    <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="minuta_rozpoczecia">Minuta rozpoczęcia</label>
+                <select class="form-control" ng-model="miejsce.minutaRozpoczecia" id="minuta_rozpoczecia">
+                    <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="godzina_zakonczenia">Godzina zakonczenia</label>
+                <select class="form-control" ng-model="miejsce.godzinaZakonczenia" id="godzina_zakonczenia">
+                    <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="minuta_zakonczenia">Minuta zakonczenia</label>
+                <select class="form-control" ng-model="miejsce.minutaZakonczenia" id="minuta_zakonczenia">
+                    <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
+                </select>
+            </div>
+        </div>
+                <button type="submit" class="btn btn-primary" ng-click='dodajMiejsce()'>Submit</button>
+    </form>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Lp.</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Adres</th>
+            <th scope="col" class="kolumnaTabeli">Czas</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td><div class="zaznaczonyCzas" style="background-color: #4cae4c; width:{{dlugosc}}px; margin-left: {{poczatek}}px"></div></td>
+        </tr>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>
+                <table class="przedzialy">
+                    <tr>
+                        <td ng-repeat="przedzial in przedzialy" style="background-color: #abdde5;" ></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
