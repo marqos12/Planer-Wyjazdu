@@ -1,0 +1,18 @@
+
+.kolumnaTabeli{
+  width: 730px;
+}
+
+.zaznaczonyCzas{
+  height:30px;
+
+}
+
+.przedzialy td{
+  border-left: 1px solid;
+  padding-left: 6px;
+  padding-right: 7px;
+}
+.przedzialy td:first-child{
+  border-left: none;
+}
