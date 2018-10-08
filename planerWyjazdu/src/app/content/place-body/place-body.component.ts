@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Place} from "../../models/place";
 
 @Component({
   selector: 'app-place-body',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceBodyComponent implements OnInit {
 
-  constructor() { }
+  public place: Place;
+  public id: number;
+
+  @Input() set setPlace (place: Place) {
+    this.place = place;
+  }
+  @Input() set setId (id: number) {
+    this.id = id;
+  }
+
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }

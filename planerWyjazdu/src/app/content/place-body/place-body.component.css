@@ -1,0 +1,12 @@
+.placeRow{
+  border-bottom: 1px solid gainsboro;
+}
+
+div div{
+  padding: 0.2%;
+  border-left: 1px solid gainsboro ;
+}
+
+div div:first-child{
+  border-left: 0px;
+}

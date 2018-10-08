@@ -3,8 +3,14 @@
     <h1 class="display-3">Planer</h1>
   </div>
 </div>
-
+<div class="content">
 <app-new-place-form></app-new-place-form>
 
 <app-place-header></app-place-header>
-<app-place-body></app-place-body>
+
+
+<app-place-body
+  *ngFor="let place of places; let i = index"
+  [setPlace]="place" [setId]="i"></app-place-body>
+
+</div>
