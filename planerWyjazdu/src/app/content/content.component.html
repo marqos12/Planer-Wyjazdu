@@ -1,0 +1,78 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Planer</h1>
+  </div>
+</div>
+
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="form-group col-md-2">
+        <label for="nazwa">Nazwa</label>
+        <input type="email" ng-model="miejsce.nazwa" class="form-control" id="nazwa" aria-describedby="emailHelp" placeholder="Podaj nazwę miejsca">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="adres">Adres</label>
+        <input type="email" ng-model="miejsce.adres" class="form-control" id="adres" aria-describedby="emailHelp" placeholder="Podaj adres">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="godzina_rozpoczecia">Godzina rozpoczęcia</label>
+        <select class="form-control" ng-model="miejsce.godzinaRozpoczecia" id="godzina_rozpoczecia">
+          <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="minuta_rozpoczecia">Minuta rozpoczęcia</label>
+        <select class="form-control" ng-model="miejsce.minutaRozpoczecia" id="minuta_rozpoczecia">
+          <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="godzina_zakonczenia">Godzina zakonczenia</label>
+        <select class="form-control" ng-model="miejsce.godzinaZakonczenia" id="godzina_zakonczenia">
+          <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="minuta_zakonczenia">Minuta zakonczenia</label>
+        <select class="form-control" ng-model="miejsce.minutaZakonczenia" id="minuta_zakonczenia">
+          <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click='dodajMiejsce()'>Submit</button>
+  </form>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Lp.</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Adres</th>
+      <th scope="col" class="kolumnaTabeli">Czas</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td><div class="zaznaczonyCzas" style="background-color: #4cae4c; width:{{dlugosc}}px; margin-left: {{poczatek}}px"></div></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>
+        <table class="przedzialy">
+          <tr>
+            <td ng-repeat="przedzial in przedzialy" style="background-color: #abdde5;" ></td>
+
+          </tr>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
