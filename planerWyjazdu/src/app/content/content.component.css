@@ -2,3 +2,24 @@
   padding: 10px;
 }
 
+.material-icons.md-48 {
+  font-size: 70px;
+  padding-right: 10px;
+}
+
+.backgrImage{
+  height: 200px;
+  background-position: center;
+  background-image: url("/assets/193442.jpg");
+}
+
+.textPosition{
+  padding-top:20px;
+  padding-left:10px;
+  background-color:rgba(177, 178, 178, 0.48);
+  border-radius: 36px;
+  width:360px;
+  height:130px;
+  position:relative;
+  top:37px;
+}
