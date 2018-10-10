@@ -1,37 +1,44 @@
-<form fxLayout="">
-  <div class="row">
-    <div class="form-group col-md-2">
+<form >
+    <div class="column" >
+  <div class="row" fxLayoutAlign="center center" class="formUp" fxLayoutGap="20px">
+    <div class="form-group col-md-4">
       <label for="nazwa">Nazwa</label>
       <input type="email" ng-model="miejsce.nazwa" class="form-control" id="nazwa" aria-describedby="emailHelp" placeholder="Podaj nazwę miejsca">
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-4">
       <label for="adres">Adres</label>
       <input type="email" ng-model="miejsce.adres" class="form-control" id="adres" aria-describedby="emailHelp" placeholder="Podaj adres">
     </div>
-    <div class="form-group col-md-2">
+    </div>
+    <div class="row" fxLayoutAlign="space-around center" class="formUp" fxLayoutGap="1px" >
+    <div class="form-group col-md-1">
       <label for="godzina_rozpoczecia">Godzina rozpoczęcia</label>
       <select class="form-control" ng-model="miejsce.godzinaRozpoczecia" id="godzina_rozpoczecia">
         <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-1">
       <label for="minuta_rozpoczecia">Minuta rozpoczęcia</label>
       <select class="form-control" ng-model="miejsce.minutaRozpoczecia" id="minuta_rozpoczecia">
         <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-1">
       <label for="godzina_zakonczenia">Godzina zakonczenia</label>
       <select class="form-control" ng-model="miejsce.godzinaZakonczenia" id="godzina_zakonczenia">
         <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-1">
       <label for="minuta_zakonczenia">Minuta zakonczenia</label>
       <select class="form-control" ng-model="miejsce.minutaZakonczenia" id="minuta_zakonczenia">
         <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>
       </select>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" ng-click='dodajMiejsce()'>Submit</button>
+  <div class="row">
+      <button type="submit" class="btn btn-primary" ng-click='dodajMiejsce()'>Submit</button>
+  </div>
+  </div>
+
 </form>
