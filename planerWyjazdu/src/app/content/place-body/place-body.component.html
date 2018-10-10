@@ -10,8 +10,10 @@
   <div fxFlex="10%">
     {{place.address}}
   </div>
-  <div fxFlex="auto">
-
+  <div fxFlex="58%">
+    <div fxLayout="row">
+      <div *ngFor="let kolor of kolory; let i = index" [ngStyle]="{'background-color':kolor}" style="width:50px;height:20px;" ></div>
+    </div>
   </div>
   <div fxFlex="10%">
     pn-pt: 10:30 - 15:00 sb-nd: 12:00 - 14:00
