@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Place, DayHours} from "../models/place";
+import {PlacesServiceService} from "../service/places-service.service";
 
 
 @Component({
@@ -11,7 +12,7 @@ export class ContentComponent implements OnInit {
 
   public places: Place[] = [];
 
-  constructor() {
+  constructor(private placeService:PlacesServiceService) {
   }
 
   ngOnInit() {
@@ -48,44 +49,17 @@ export class ContentComponent implements OnInit {
       place.name=nazwy[i];
       place.address=adresy[i];
 
-      place.monday.startHours=godzinyOtwarcia[i];
-      place.monday.startMinutes=minutyOtwarcia[i];
-      place.monday.stopHours=godzinyZamkniecia[i];
-      place.monday.stopMinutes=minutyZamkniecia[i];
+      for(let j = 0; j < 7; j++) {
+        place.days[j].startHours = Math.floor(godzinyOtwarcia[i]+j/3);
+        place.days[j].startMinutes = minutyOtwarcia[i];
+        place.days[j].stopHours = Math.floor(godzinyZamkniecia[i]-j/2);
+        place.days[j].stopMinutes = minutyZamkniecia[i];
+      }
 
-      place.tuesday.startHours=godzinyOtwarcia[i];
-      place.tuesday.startMinutes=minutyOtwarcia[i];
-      place.tuesday.stopHours=godzinyZamkniecia[i];
-      place.tuesday.stopMinutes=minutyZamkniecia[i];
-
-      place.wednesday.startHours=godzinyOtwarcia[i];
-      place.wednesday.startMinutes=minutyOtwarcia[i];
-      place.wednesday.stopHours=godzinyZamkniecia[i];
-      place.wednesday.stopMinutes=minutyZamkniecia[i];
-
-      place.thursday.startHours=godzinyOtwarcia[i];
-      place.thursday.startMinutes=minutyOtwarcia[i];
-      place.thursday.stopHours=godzinyZamkniecia[i];
-      place.thursday.stopMinutes=minutyZamkniecia[i];
-
-      place.friday.startHours=godzinyOtwarcia[i];
-      place.friday.startMinutes=minutyOtwarcia[i];
-      place.friday.stopHours=godzinyZamkniecia[i];
-      place.friday.stopMinutes=minutyZamkniecia[i];
-
-      place.saturday.startHours=godzinyOtwarciaS[i];
-      place.saturday.startMinutes=minutyOtwarciaS[i];
-      place.saturday.stopHours=godzinyZamknieciaS[i];
-      place.saturday.stopMinutes=minutyZamknieciaS[i];
-
-      place.sunday.startHours=godzinyOtwarcia[i];
-      place.sunday.startMinutes=minutyOtwarcia[i];
-      place.sunday.stopHours=godzinyZamkniecia[i];
-      place.sunday.stopMinutes=minutyZamkniecia[i];
-
-      this.places.push(place);
-
+      //this.places.push(place);
+this.placeService.setPlace(place);
     }
+    this.places = this.placeService.getPlaces();
   }
 
 }
