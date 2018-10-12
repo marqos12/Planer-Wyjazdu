@@ -14,6 +14,7 @@ import { NewPlaceFormComponent } from './content/new-place-form/new-place-form.c
 } from "@angular/material";
 import { PlaceHeaderComponent } from './content/place-header/place-header.component';
 import { PlaceBodyComponent } from './content/place-body/place-body.component';
+import { SafePipe } from './pipe/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlaceBodyComponent } from './content/place-body/place-body.component';
     ContentComponent,
     NewPlaceFormComponent,
     PlaceHeaderComponent,
-    PlaceBodyComponent
+    PlaceBodyComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

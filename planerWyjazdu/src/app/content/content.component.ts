@@ -32,14 +32,14 @@ export class ContentComponent implements OnInit {
       "al. Obok Biedronki"];
 
     let godzinyOtwarcia: number[]=[9,11,7,8,10,7]
-    let minutyOtwarcia:number[]=[30,30,0,0,0,30];
+    let minutyOtwarcia:number[]=[3,3,0,0,0,3];
     let godzinyZamkniecia=[14,18,14,16,15,15];
-    let minutyZamkniecia:number[]=[0,0,30,0,30,30];
+    let minutyZamkniecia:number[]=[0,0,3,0,3,3];
 
     let godzinyOtwarciaS=[11,9,9,8,10,9]
     let minutyOtwarciaS:number[]=[0,0,0,0,0,0];
     let godzinyZamknieciaS=[14,15,14,16,17,18];
-    let minutyZamknieciaS:number[]=[0,0,0,0,30,30];
+    let minutyZamknieciaS:number[]=[0,0,0,0,3,3];
 
 
     for (let i = 0; i < 6; i++){
@@ -52,8 +52,9 @@ export class ContentComponent implements OnInit {
       for(let j = 0; j < 7; j++) {
         place.days[j].startHours = Math.floor(godzinyOtwarcia[i]+j/3);
         place.days[j].startMinutes = minutyOtwarcia[i];
-        place.days[j].stopHours = Math.floor(godzinyZamkniecia[i]-j/2);
+        place.days[j].stopHours = Math.floor(godzinyZamkniecia[i]+j/3);
         place.days[j].stopMinutes = minutyZamkniecia[i];
+        place.days[j].color='#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
       }
 
       //this.places.push(place);
