@@ -11,7 +11,7 @@
     {{place.address}}
   </div>
   <div fxFlex="58%">
-    <div fxLayout="row">
+    <div fxLayout="row" fxFlex="100%">
       <div *ngFor="let hour of graphicHours; let i = index" [ngStyle]="hour"  ><span>{{hours[i]}}</span></div>
     </div>
   </div>

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Place, DayHours} from "../models/place";
 import {PlacesServiceService} from "../service/places-service.service";
+import {CookieService} from "ngx-cookie-service";
+import {Trip} from "../models/trip";
 
 
 @Component({
@@ -9,10 +11,12 @@ import {PlacesServiceService} from "../service/places-service.service";
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-
+  public isLoadMode = false;
+  public codeGenerated=false;
+  public generatedCode:string='';
   public places: Place[] = [];
 
-  constructor(private placeService:PlacesServiceService) {
+  constructor(private placeService:PlacesServiceService, private cookieService: CookieService) {
   }
 
   ngOnInit() {
@@ -49,18 +53,40 @@ export class ContentComponent implements OnInit {
       place.name=nazwy[i];
       place.address=adresy[i];
 
+      let color = 0x1000000+(Math.random())*0xffffff;
+
       for(let j = 0; j < 7; j++) {
         place.days[j].startHours = Math.floor(godzinyOtwarcia[i]+j/3);
         place.days[j].startMinutes = minutyOtwarcia[i];
         place.days[j].stopHours = Math.floor(godzinyZamkniecia[i]+j/3);
         place.days[j].stopMinutes = minutyZamkniecia[i];
-        place.days[j].color='#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+        place.days[j].color='#'+(color+color*j*0.000001).toString(16).substr(1,6);
       }
 
       //this.places.push(place);
-this.placeService.setPlace(place);
+//this.placeService.setPlace(place);
     }
+
+    let place:Place[] = JSON.parse(localStorage.getItem('Trip')).places;
+    place.forEach(x=>this.placeService.setPlace(x));
     this.places = this.placeService.getPlaces();
   }
 
+  public saveTrip(){
+    let trip: Trip = new Trip();
+    trip.places = this.places
+    //this.cookieService.set('Trip',JSON.stringify(trip));
+    localStorage.setItem('Trip', JSON.stringify(trip));
+  }
+
+  public loadTrip(){
+    this.isLoadMode = true;
+  }
+
+  public generateTripCode(){
+    let trip: Trip = new Trip();
+    trip.places = this.places
+    this.generatedCode = JSON.stringify(trip);
+    this.codeGenerated = true;
+  }
 }

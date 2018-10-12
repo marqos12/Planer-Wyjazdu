@@ -17,6 +17,7 @@ import { PlaceBodyComponent } from './content/place-body/place-body.component';
  import {FormsModule, ReactiveFormsModule} from "@angular/forms";
  import {MatCheckboxModule} from '@angular/material/checkbox';
  import {TextMaskModule} from "angular2-text-mask";
+ import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { PlaceBodyComponent } from './content/place-body/place-body.component';
     MatCheckboxModule,
     TextMaskModule
   ],
-  providers: [],
+  providers: [CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

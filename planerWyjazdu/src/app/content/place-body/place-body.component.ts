@@ -124,7 +124,7 @@ export class PlaceBodyComponent implements OnInit {
 
     for (let i = 0; i < this.placeService.getHourRange()*2; i++){
       let width = Math.floor(this.hourWidth/2-2)+'px';
-      let height = '30px';
+      let height = '100%';
       let dodano = false;
       let backgroundColor;
       for(let j = 0; j < 7; j++){
@@ -194,10 +194,9 @@ export class PlaceBodyComponent implements OnInit {
   }
 
   private mixColours(color1:string, color2:string):string{
-    let rgb1 = Number("0x"+color1.substr(1,6))/2;
-    let rgb2 = Number("0x"+color2.substr(1,6))/2;
-    let rgb3 = "#"+((rgb1+rgb2)/2).toString(16).substr(1,6);
-    console.log(color1+" = "+rgb1 +"  "+color2+" = "+rgb2+" = "+((rgb1+rgb2)));
+    let rgb1 = Math.floor(Number("0x"+color1.substr(1,6))/2);
+    let rgb2 = Math.floor(Number("0x"+color2.substr(1,6))/4);
+    let rgb3 = "#"+((0x1000000+rgb1+rgb2)).toString(16).substr(1,7);
     return rgb3;
   }
 

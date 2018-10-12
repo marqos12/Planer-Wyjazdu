@@ -1,25 +1,56 @@
 <div class="jumbotron" class="backgrImage">
   <div class="container">
-    <div fxLayout="row" fxLayoutAlign="start center" class="textPosition"  >
-      <div >
+    <div fxLayout="row" fxLayoutAlign="start center" class="textPosition">
+      <div>
         <i class="material-icons md-48">
           airport_shuttle
         </i>
       </div>
-      <div  >
+      <div>
         <h1 class="display-3" style="font-family: Bookman; "> Planer</h1>
       </div>
     </div>
   </div>
 </div>
 <div class="content">
-<app-new-place-form></app-new-place-form>
 
-<app-place-header></app-place-header>
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1%">
+    <button mat-raised-button color="primary" (click)="loadTrip()">Wczytaj grafik</button>
+    <button mat-raised-button color="accent" (click)="generateTripCode()">Wygeneruj kod grafiku</button>
+  </div>
+  <div  *ngIf="isLoadMode">
+    <mat-form-field style="width:30%; margin-left:35%;" >
+    <textarea matInput placeholder="Wstaw kod" cdkTextareaAutosize
+              cdkAutosizeMinRows="2"></textarea>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1%">
+      <button mat-raised-button color="primary" (click)="loadTrip()">Wczytaj</button>
+    </div>
+
+  </div>
+
+  <div  *ngIf="codeGenerated">
+    <mat-form-field style="width:30%; margin-left:35%;" >
+    <textarea matInput placeholder="Wygenerowany kod" cdkTextareaAutosize
+              cdkAutosizeMinRows="2" [disabled]="true">{{generatedCode}}</textarea>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1%">
+      <button mat-raised-button color="primary" (click)="loadTrip()">Wczytaj</button>
+    </div>
+
+  </div>
 
 
-<app-place-body
-  *ngFor="let place of places; let i = index"
-  [setPlace]="place" [setId]="i"></app-place-body>
+  <app-new-place-form></app-new-place-form>
+
+  <app-place-header></app-place-header>
+
+
+  <app-place-body
+    *ngFor="let place of places; let i = index"
+    [setPlace]="place" [setId]="i"></app-place-body>
 
 </div>
+
