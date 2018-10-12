@@ -10,14 +10,93 @@
       <input type="email" ng-model="miejsce.adres" class="form-control" id="adres" aria-describedby="emailHelp" placeholder="Podaj adres">
     </div>
     </div>
+      <hr>
+      <div class="daysOpened">Dni i godziny otwarcia</div>
+      <div class="row" >
+        <div fxFlex="15%"></div>
+        <div  class="form-group col-md-2">
+          <mat-checkbox color="primary" [disabled]="">Poniedziałek</mat-checkbox>
+        </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="15%"></div>
+        <div  class="form-group col-md-2">
+          <mat-checkbox color="primary" [disabled]="">Sobota</mat-checkbox>
+        </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div fxFlex="15%"></div>
+        <div  class="form-group col-md-2">
+          <mat-checkbox color="primary" [disabled]="">Wtorek</mat-checkbox>
+        </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="15%"></div>
+        <div  class="form-group col-md-2">
+          <mat-checkbox color="primary" [disabled]="">Niedziela</mat-checkbox>
+        </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div fxFlex="15%"></div>
+      <div  class="form-group col-md-2">
+        <mat-checkbox color="primary" [disabled]="">Środa</mat-checkbox>
+      </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+    </div>
+      <div class="row">
+        <div fxFlex="15%"></div>
+      <div  class="form-group col-md-2">
+        <mat-checkbox color="primary" [disabled]="">Czwartek</mat-checkbox>
+      </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+    </div>
+      <div class="row">
+        <div fxFlex="15%"></div>
+        <div  class="form-group col-md-2">
+        <mat-checkbox color="primary" [disabled]="">Piątek</mat-checkbox>
+      </div>
+        <div class="form-group"  fxFlex="11%">
+          <mat-form-field class="example-full-width" class="hourSelect">
+            <input matInput placeholder= "Godziny" [textMask]="{mask: mask}">
+          </mat-form-field>
+        </div>
+    </div>
+
+
     <div class="row" fxLayoutAlign="space-around center" class="formUp" fxLayoutGap="1px" >
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-2">
       <label for="godzina_rozpoczecia">Godzina rozpoczęcia</label>
       <select class="form-control" ng-model="miejsce.godzinaRozpoczecia" id="godzina_rozpoczecia">
         <option ng-repeat="godzina in tabGodzin" >{{godzina}}</option>
       </select>
     </div>
-    <div class="form-group col-md-1">
+    <div class="form-group col-md-2">
       <label for="minuta_rozpoczecia">Minuta rozpoczęcia</label>
       <select class="form-control" ng-model="miejsce.minutaRozpoczecia" id="minuta_rozpoczecia">
         <option ng-repeat="minuta in tabMinut" >{{minuta}}</option>

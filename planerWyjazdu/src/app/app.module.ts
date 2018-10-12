@@ -14,6 +14,9 @@ import { NewPlaceFormComponent } from './content/new-place-form/new-place-form.c
 } from "@angular/material";
 import { PlaceHeaderComponent } from './content/place-header/place-header.component';
 import { PlaceBodyComponent } from './content/place-body/place-body.component';
+ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+ import {MatCheckboxModule} from '@angular/material/checkbox';
+ import {TextMaskModule} from "angular2-text-mask";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,11 @@ import { PlaceBodyComponent } from './content/place-body/place-body.component';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    TextMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
