@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-place-form.component.css']
 })
 export class NewPlaceFormComponent implements OnInit {
-
+  public mask = [/\d/,/\d/, ':', /\d/, /\d/,' ','-',' ', /\d/,/\d/, ':', /\d/, /\d/]
   constructor() { }
 
   ngOnInit() {
